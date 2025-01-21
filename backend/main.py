@@ -8,6 +8,13 @@ import io
 from PIL import Image
 import logging
 from textblob import TextBlob  # Ensure the textblob library is installed
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
+app = FastAPI()
+
+# Serve React build files
+app.mount("/", StaticFiles(directory="build", html=True))
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
